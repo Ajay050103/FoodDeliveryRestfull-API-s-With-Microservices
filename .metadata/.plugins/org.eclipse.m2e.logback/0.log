@@ -3084,3 +3084,13 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2025-11-10 20:30:30,366 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
 2025-11-10 20:43:39,341 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@3aff51c9{STOPPING}[12.0.21,sto=0]
 2025-11-10 20:43:39,351 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@1da25198{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2025-11-10 21:40:09,760 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-11-10 21:40:48,901 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 3 resources from src\main\resources to target\classes
+2025-11-10 21:40:48,929 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-11-10 21:40:48,933 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+2025-11-10 21:40:59,781 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-11-10 21:40:59,795 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-11-10 21:40:59,799 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+2025-11-10 21:41:10,298 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-11-10 21:41:10,319 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-11-10 21:41:10,326 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\sajja\Microservicess\FoodDelivery\DeliveryService\src\test\resources
