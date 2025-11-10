@@ -1,0 +1,5 @@
+package com.ajayfoods.servics.impl;
+
+public class OrderServiceImpl {
+
+}

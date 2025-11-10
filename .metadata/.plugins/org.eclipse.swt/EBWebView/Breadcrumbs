@@ -1,0 +1,38 @@
+2:12:11 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+2:12:11 Microsoft.Shutdown.TabStripModel.CloseAllTabs
+2:12:11 Microsoft.Shutdown.TabStripModel.CloseTabs
+2:12:11 Microsoft.Shutdown.TabStripModel.CloseTabs_EdgeBeforeClosingAllTabs
+2:12:11 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl
+2:12:11 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_TabClosable
+2:12:11 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_ClosingAll
+2:12:11 Microsoft.Shutdown.TabStripModel.CloseWebContentses
+2:12:11 Microsoft.Shutdown.TabStripModel.CloseWebContentses_FastShutdown
+2:12:11 Microsoft.Shutdown.TabStripModel.ShouldRunUnloadListenerBeforeClosing_false
+2:12:11 Tab32 RenderProcessGone
+2:12:11 Microsoft.UnloadController.ClearUnloadState
+2:12:11 Microsoft.Shutdown.TabStripModel.RunUnloadListenerBeforeClosing_false
+2:12:11 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_ClosedAll
+2:12:11 Microsoft.Shutdown.TabStripModel.SendDetachWebContentsNotifications
+2:12:11 Microsoft.UnloadController.ClearUnloadState
+2:12:11 Browser32 Close Tab32 at 0
+2:12:11 Tab32 WebContentsDestroyed
+2:12:11 Microsoft.UnloadController.TabStripEmpty
+2:12:11 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+2:12:11 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
+2:12:11 Microsoft.Shutdown.OnWindowClosing
+2:12:11 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+2:12:11 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
+2:12:11 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
+2:12:11 Widget Closed: BrowserWidget
+2:12:11 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
+2:12:11 Microsoft.Shutdown.OnWindowClosing
+2:12:11 Microsoft.Shutdown.OnWindowClosing_DeleteScheduled
+2:12:11 Microsoft.Browser_Removed
+2:12:13 Memory Pressure: Moderate
+2:12:14 Tab11 StartNav326 #typed
+2:12:14 Tab11 FinishNav326
+2:12:14 Tab11 PageLoad
+2:12:14 Tab11 StartNav327 #typed
+2:12:14 Tab11 FinishNav327
+2:12:14 Tab11 PageLoad
+2:12:15 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp

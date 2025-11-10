@@ -1,0 +1,12 @@
+package com.ajayfoods;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrderManagementManagement1Application {
+	public static void main(String[] args) {
+		SpringApplication.run(OrderManagementManagement1Application.class, args);
+	}
+
+}

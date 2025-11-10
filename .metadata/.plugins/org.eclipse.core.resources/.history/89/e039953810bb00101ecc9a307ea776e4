@@ -1,0 +1,20 @@
+package com.ajayfoods.service.impl;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.ajayfoods.dto.OrderResponseDto;
+import com.ajayfoods.service.deliveryService;
+
+@Service
+public class DeliveryServiceImpl implements deliveryService{
+	RestTemplate
+
+	@Override
+	public ResponseEntity<OrderResponseDto> updateOrderStatus(long orderId, String status) {
+		
+		return ;
+	}
+	
+}

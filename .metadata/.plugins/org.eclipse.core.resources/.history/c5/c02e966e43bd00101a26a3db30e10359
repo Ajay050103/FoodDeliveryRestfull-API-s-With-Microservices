@@ -1,0 +1,47 @@
+package com.ajayfoods.servics.impl;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import com.ajayfoods.builder.OrderBuilder;
+import com.ajayfoods.builder.OrderDtoBuilder;
+import com.ajayfoods.dao.OrderRepository;
+import com.ajayfoods.dto.OrderRequestDto;
+import com.ajayfoods.dto.OrderResponseDto;
+import com.ajayfoods.model.Order;
+import com.ajayfoods.servics.OrderService;
+@Service
+public class OrderServiceImpl implements OrderService{
+	private final OrderRepository orderRepository;  
+	private final RestTemplate restTemplate;
+	
+	public OrderServiceImpl(OrderRepository orderRepository, RestTemplate restTemplate) {
+		this.orderRepository = orderRepository;
+		this.restTemplate = restTemplate;
+	}
+
+	@Override
+	public OrderResponseDto placeOrder(OrderRequestDto orderRequestDto) {
+		Order order = OrderBuilder.buildOrderFromOrderDto(orderRequestDto);
+		Order savedOrder = orderRepository.save(order);
+		OrderResponseDto orderResponseDto = OrderDtoBuilder.OrderResponseDtobuildOrderDtoFromOrder(savedOrder);
+		String restaurantName = fetchRestaurantName(savedOrder.getRestaurantId());
+		orderResponseDto.setRestaurantName(restaurantName);
+		return orderResponseDto;
+	}
+	
+	private  String fetchRestaurantName(long restaurantId) {
+		return restTemplate.getForObject("http://RESTAURANTMANAGEMENT/restaurant/name/"+restaurantId, String.class);
+	}
+
+	@Override
+	public OrderResponseDto updateOrderStatus(long orderId, String status) {
+			Order order = orderRepository.findById(orderId).orElseThrow(()->new IllegalArgumentException("Order Not Found with "+orderId));
+			order.setStatus(status);
+			Order saved = orderRepository.save(order);
+			OrderResponseDto orderResponseDto = OrderDtoBuilder.OrderResponseDtobuildOrderDtoFromOrder(saved);
+			String restaurantName = fetchRestaurantName(order.getRestaurantId());
+			orderResponseDto.setRestaurantName(restaurantName);
+			return orderResponseDto ;
+	}
+
+}

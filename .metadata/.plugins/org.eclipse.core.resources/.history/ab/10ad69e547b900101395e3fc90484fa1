@@ -1,0 +1,43 @@
+package com.ajayfoods.builder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.ajayfoods.dto.AddressResponseDto;
+import com.ajayfoods.dto.ItemResponseDto;
+import com.ajayfoods.dto.RestaurantResponseDto;
+import com.ajayfoods.model.Address;
+import com.ajayfoods.model.Item;
+import com.ajayfoods.model.Restaurant;
+
+public class RestaurantDtoBuilder {
+	
+	public static RestaurantResponseDto buildRestaurantDtoFromRestaurant(Restaurant restaurant) {
+		return RestaurantResponseDto.builder()
+									.restaurantId(restaurant.getRestaurantId())
+									.restaurantName(restaurant.getRestaurantName())
+									.phoneNum(restaurant.getPhoneNum())
+									.rating(restaurant.getRating())
+									.addressResponseDto(buildAddressDtoFromAddress(restaurant.getAddress()))
+									.itemResponseDtoList(null)
+									.build();
+	}
+	
+	private  static AddressResponseDto buildAddressDtoFromAddress (Address address) {
+		AddressResponseDto  addressResponseDto = new AddressResponseDto();
+		BeanUtils.copyProperties(address, addressResponseDto);
+		return addressResponseDto;
+	}
+	
+	private List<ItemResponseDto> buildItemDtoFromItem(List<Item> itemsList){
+		List<ItemResponseDto> itemResponseDtosList = new ArrayList();
+		for(Item item : itemsList) {
+			ItemResponseDto itemResponseDto = new  ItemResponseDto();
+			BeanUtils.copyProperties(item, itemResponseDto);
+			itemResponseDtosList.add(itemResponseDto);
+			return itemResponseDtosList;
+		}
+	}
+}

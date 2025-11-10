@@ -1,0 +1,24 @@
+package com.ajayfoods.servics.impl;
+
+import com.ajayfoods.builder.OrderBuilder;
+import com.ajayfoods.dao.OrderRepository;
+import com.ajayfoods.dto.OrderRequestDto;
+import com.ajayfoods.dto.OrderResponseDto;
+import com.ajayfoods.model.Order;
+import com.ajayfoods.servics.OrderService;
+
+public class OrderServiceImpl implements OrderService{
+	private final OrderRepository orderRepository;  
+
+	public OrderServiceImpl(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
+
+	@Override
+	public OrderResponseDto placeOrder(OrderRequestDto orderRequestDto) {
+		Order order = OrderBuilder.buildOrderFromOrderDto(orderRequestDto);
+		Order saved = orderRepository.save(order);
+		return null;
+	}
+
+}

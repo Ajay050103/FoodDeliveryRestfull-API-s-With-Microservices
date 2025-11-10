@@ -1,0 +1,27 @@
+package com.ajayfoods.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ajayfoods.dto.OrderRequestDto;
+import com.ajayfoods.dto.OrderResponseDto;
+import com.ajayfoods.servics.OrderService;
+
+@RestController
+public class OrderController {
+
+	private final OrderService orderService;
+
+	public OrderController(OrderService orderService) {
+		this.orderService = orderService;
+	}
+
+	@PostMapping("/placeorder")
+	public ResponseEntity<OrderResponseDto> placeOrder (@RequestBody OrderRequestDto orderRequestDto){
+		OrderResponseDto orderResponseDto = orderService.placeOrder(orderRequestDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(orderResponseDto);
+	}
+}

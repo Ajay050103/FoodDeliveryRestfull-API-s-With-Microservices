@@ -1,0 +1,95 @@
+package com.ajayfoods.service.impl;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.ajayfoods.dao.RestaurantRepository;
+import com.ajayfoods.dto.AddressRequestDto;
+import com.ajayfoods.dto.ItemRequestDto;
+import com.ajayfoods.dto.RestaurantCreationResponse;
+import com.ajayfoods.dto.RestaurantRequestDto;
+import com.ajayfoods.dto.RestaurantResponseDto;
+import com.ajayfoods.model.Address;
+import com.ajayfoods.model.Item;
+import com.ajayfoods.model.Restaurant;
+
+@ExtendWith(MockitoExtension.class)
+public class RestaurantServiceImplTest {
+	
+	@Mock
+	RestaurantRepository restaurantRepository;
+	
+	@InjectMocks
+	RestaurantServiceImpl restaurantServiceImpl ;
+	
+	@Test
+	public void addRestaurantSuccess() {
+		AddressRequestDto addressRequestDto = new AddressRequestDto();
+		addressRequestDto.setCity("vizag");
+		addressRequestDto.setState("AndhraPradesh");
+		
+		ItemRequestDto itemRequest = new ItemRequestDto();
+		List<ItemRequestDto> itemRequestDtos = new ArrayList<>();
+		itemRequest.setItemName("ChickenBiryani");
+		itemRequest.setItemCategory("Biryani's");
+		itemRequest.setItemType("Non-Veg");
+		itemRequest.setItemPrice(200);
+		itemRequestDtos.add(itemRequest);
+		
+		RestaurantRequestDto restaurantRequestDto = new RestaurantRequestDto();
+		restaurantRequestDto.setRestaurantName("Hotel Jas");
+		restaurantRequestDto.setPhoneNum("99438439849");
+		restaurantRequestDto.setAddressRequestDto(addressRequestDto);
+		restaurantRequestDto.setItemRequestDtoList(itemRequestDtos);
+		
+		Restaurant restaurant = new Restaurant();
+		restaurant.setRestaurantName("Hotel Jas");
+		when(restaurantRepository.save(any(Restaurant.class))).thenReturn(restaurant);
+		
+		RestaurantCreationResponse creationResponse = restaurantServiceImpl.addRestaurant(restaurantRequestDto);
+		
+		assertNotNull(creationResponse);
+		assertEquals("Hotel Jas", creationResponse.getRestaurantName());
+		
+	}
+	@Test
+	public void getRestaurantById () {
+		
+		Restaurant restaurant = new Restaurant();
+		restaurant.setRestaurantId(1L);
+		restaurant.setRestaurantName("Jas");
+		
+		Address address = new Address();
+		address.setAddressId(1);
+		address.setCity("viazg");
+		
+		Item item = new Item();
+		item.setItemAvailable(true);
+		item.setItemCategory("Biryani's");
+		List<Item> items = new ArrayList<>();
+		items.add(item);
+		
+		restaurant.setAddress(address);
+		restaurant.setItems(items);
+		
+		when(restaurantRepository.findById(1L)).thenReturn(Optional.of(restaurant));
+		RestaurantResponseDto restaurantResponseDto = restaurantServiceImpl.getRestaurantById(1);
+		
+		assertNotNull(restaurantResponseDto);
+		assertEquals("Jas", restaurantResponseDto.getRestaurantName());
+		
+	}
+	
+}

@@ -1,0 +1,41 @@
+package com.ajayfoods.builder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.ajayfoods.dto.AddressRequestDto;
+import com.ajayfoods.dto.ItemRequestDto;
+import com.ajayfoods.dto.RestaurantRequestDto;
+import com.ajayfoods.model.Address;
+import com.ajayfoods.model.Item;
+import com.ajayfoods.model.Restaurant;
+public class RestaurantBuilder {
+	
+	public static Restaurant buuildrestaurentFromRestaurantDto (RestaurantRequestDto  restaurantRequestDto) {
+		return Restaurant.builder()
+								  .restaurantName(restaurantRequestDto.getRestaurantName())
+								  .phoneNum(restaurantRequestDto.getPhoneNum())
+								  .address(buildAddressFromAddressDto(restaurantRequestDto.getAddressRequestDto()))
+								  .items(buildItemsFromItemsDto(restaurantRequestDto.getItemRequestDtoList()))
+								  .build();
+	}
+	
+	private static Address buildAddressFromAddressDto(AddressRequestDto addressRequestDto) {
+		Address address = new  Address();
+		BeanUtils.copyProperties(addressRequestDto, address);
+		return address;
+	}
+	
+	private static List<Item> buildItemsFromItemsDto(List<ItemRequestDto> itemRequestDtos){
+		List <Item> itemsList = new ArrayList<>();
+		for(ItemRequestDto  itemRequestDto: itemRequestDtos) {
+			Item item = new Item();
+			BeanUtils.copyProperties(itemRequestDto, item);
+			itemsList.add(item);
+		}
+		return itemsList;
+	}
+
+}

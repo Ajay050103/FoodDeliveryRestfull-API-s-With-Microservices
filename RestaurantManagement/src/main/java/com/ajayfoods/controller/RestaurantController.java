@@ -1,0 +1,57 @@
+package com.ajayfoods.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ajayfoods.dto.RestaurantCreationResponse;
+import com.ajayfoods.dto.RestaurantRequestDto;
+import com.ajayfoods.dto.RestaurantResponseDto;
+import com.ajayfoods.service.RestaurantService;
+
+@RestController()
+@RequestMapping("/restaurant")
+public class RestaurantController {
+	@Value("${discount}")
+	Integer discount;
+	
+	@Autowired
+	private Environment environment;
+	
+	private final RestaurantService restaurantService;
+	public RestaurantController(RestaurantService restaurantService) {
+		this.restaurantService=restaurantService;
+	}
+	@PostMapping("/add")
+	public ResponseEntity <RestaurantCreationResponse> addRestaurant(@RequestBody RestaurantRequestDto restaurantRequestDto){
+		RestaurantCreationResponse restaurantCreationResponse = restaurantService.addRestaurant(restaurantRequestDto);
+		return ResponseEntity.status(HttpStatus.CREATED).body(restaurantCreationResponse);
+	}
+	
+	@GetMapping("/getrestaurant/{restaunantId}")
+	public ResponseEntity<RestaurantResponseDto> getRestaurantById(@PathVariable(name="restaunantId") long restaurantId){
+		RestaurantResponseDto restaurantResponseDto = restaurantService.getRestaurantById(restaurantId);
+		return ResponseEntity.ok(restaurantResponseDto);
+	}
+	
+	@GetMapping("/name/{restaunantId}")
+	public ResponseEntity<String> getRestaurantNameById(@PathVariable(name="restaunantId") long restaurantId){
+		RestaurantResponseDto restaurantResponseDto = restaurantService.getRestaurantById(restaurantId);
+		String port = environment.getProperty("local.server.port");
+		return ResponseEntity.ok(restaurantResponseDto.getRestaurantName()+port);
+	}
+	
+	@GetMapping("/discount")
+	public Integer getDiscount() {
+		return discount;
+	}
+	
+}

@@ -1,0 +1,16 @@
+package com.ajayfoods.service;
+
+import org.springframework.stereotype.Service;
+
+import com.ajayfoods.dto.RestaurantRequestDto;
+
+@Service
+public interface RestaurantService {
+
+	public void addRestaurant(RestaurantRequestDto restaurantRequestDto) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

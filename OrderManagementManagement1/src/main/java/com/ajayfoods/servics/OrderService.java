@@ -1,0 +1,17 @@
+package com.ajayfoods.servics;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.ajayfoods.dto.OrderRequestDto;
+import com.ajayfoods.dto.OrderResponseDto;
+
+@Service
+public interface OrderService {
+
+	OrderResponseDto placeOrder(OrderRequestDto orderRequestDto);
+	OrderResponseDto updateOrderStatus(long orderId , String status);
+	String getRestaurantName(long restaurantId);
+
+
+}

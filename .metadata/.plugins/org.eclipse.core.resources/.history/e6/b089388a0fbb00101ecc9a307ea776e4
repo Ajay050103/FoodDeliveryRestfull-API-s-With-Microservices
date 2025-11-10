@@ -1,0 +1,5 @@
+package com.ajayfoods.service.impl;
+
+public class DeliveryServiceImpl {
+
+}

@@ -1,0 +1,5 @@
+package com.ajayfoods.controller;
+
+public class RestaurantController {
+
+}
