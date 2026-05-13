@@ -19,7 +19,7 @@ It includes key features such as **API Gateway**, **Service Discovery**, and **C
 | **Restaurant Service** 🍴 | Manages restaurant profiles, menus, and availability. |
 | **Order Service** 🛒 | Handles order placement, tracking, and coordination with restaurants and deliveries. |
 | **Delivery Service** 🚚 | Manages delivery assignments and status updates. |
-| **User Management Service (Planned)** 👤 | Placeholder for future user registration, authentication, and authorization features. |
+| **User Management Service | Future implementation |
 
 ---
 
@@ -144,6 +144,6 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 **Ajay Sajja**
 🎓 MCA Graduate | 💻 Java & Spring Boot Developer
-🔗 [LinkedIn Profile](https://www.linkedin.com/in/ajay050103/)
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/ajay-sajja/)
 📧 Contact: *ajaysajja5022@gmail.com*
 
